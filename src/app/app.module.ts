@@ -1,17 +1,13 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './inventory/product-list/product-list.component';
-import { ProductAlertsComponent } from './inventory/product-alerts/product-alerts.component';
-import { ProductDetailsComponent } from './inventory/product-details/product-details.component';
 import { CartService } from './cart.service';
-//import { CartComponent } from './checkout/cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
-//import { ShippingComponent } from './checkout/shipping/shipping.component';
 
 import { CheckoutModule } from './checkout/checkout.module';
 import { InventoryModule } from './inventory/inventory.module';
@@ -23,23 +19,16 @@ import { InventoryModule } from './inventory/inventory.module';
     CheckoutModule,
     InventoryModule,
     RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
-    //  { path: 'products/:productId', component: ProductDetailsComponent },
-      //{ path: 'cart', component: CartComponent },
-      //{ path: 'shipping', component: ShippingComponent },
+      { path: '', component: ProductListComponent }
     ])
   ],
   declarations: [
     AppComponent,
-    TopBarComponent,
-    //ProductListComponent,
-    //ProductAlertsComponent,
-    //ProductDetailsComponent,
-    //CartComponent,
-    //ShippingComponent
+    TopBarComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: [CartService]
+  providers: [CartService, Title],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }
 
