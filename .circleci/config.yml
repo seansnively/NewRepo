@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/my-project
     docker:
-      - image: circleci/node:8-browsers
+      - image: circleci/node:10-browsers
     steps:
       - checkout
       - restore_cache:
@@ -12,12 +12,6 @@ jobs:
       - run: |
             echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
             echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-      - run: |
-          node -v
-      - run: |
-          nvm install v10.16.0
-          node -v
-          nvm alias default v10.16.0
       - run: |
           node -v
       - save_cache:
